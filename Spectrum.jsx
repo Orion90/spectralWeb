@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 'use strict'
 var React = require('react');
-var Websocket = require('react-websocket');
+var Websocket = require('./Websocket');
 var BarChart = require('react-d3/barchart').BarChart;
 
 var Spectrum = React.createClass({
