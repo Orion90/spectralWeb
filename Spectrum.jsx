@@ -22,7 +22,7 @@ var Spectrum = React.createClass({
 		var data = this.state.freqs;
 		var height = 10;
 		var w = parseInt(window.innerWidth,10)
-		var h = parseInt(window.innerHeight,10)
+		var h = parseInt(window.innerHeight*0.9,10)
       /**/
       return <div>
       <Websocket url='ws://localhost:8080/fft' onMessage={this.handleData}/>
