@@ -22,10 +22,12 @@ var Spectrum = React.createClass({
 		var data = this.state.freqs;
 		var height = 10;
 		var w = parseInt(window.innerWidth,10)
+		var h = parseInt(window.innerHeight,10)
       /**/
       return <div>
       <Websocket url='ws://localhost:8080/fft' onMessage={this.handleData}/>
-      <BarChart data={data} width={w} height={700} />
+      <BarChart data={data} width={w} height={h/2} fillColor={"#00A000"} xAxis={{innerTickSize: 0, label: "x-label"}}
+                    yAxis={{innerTickSize: 0}}/>
       </div>
     }
 })
