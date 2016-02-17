@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <title>SPECTRAL</title>
+        <style>
+            body { margin: 0; }
+            canvas {height:100%; width:100%; color:#00A000;}
+        </style>
+    </head>
+    <body>
+        <canvas style="background-color:black;" height="459" width="800" id="canvas_spec"></canvas>
+        <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>
+            socket = new WebSocket("ws://localhost:8080/fft");
+            var canvas = document.getElementById("canvas_spec");
+            var height = window.innerHeight;
+            var width = window.innerWidth;
+            var context = canvas.getContext('2d');
+            context.fillStyle = "#00A000"
+            context.strokeStyle = "#000000";
+            context.lineWidth = 2;
+            socket.onmessage = function (e)
+            {
+                    context.clearRect(0,0, width, height);
+                    var data = JSON.parse(e.data);
+                    $.each(data,function(i,val){
+                          context.fillRect(i * 12, canvas.height, 8, val);
+                    });
+            };
+            var can_send = false;
+            socket.onopen = function() {
+            }
+           
+        </script>
+    </body>
+</html>
